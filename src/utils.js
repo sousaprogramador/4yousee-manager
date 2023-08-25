@@ -3,13 +3,13 @@ export const isValid = (startDate) => {
 };
 
 export const isPriority = (locations) => {
-  const sortList = locations.sort((a, b) => {
-    if (a.localidade.prioridade !== b.localidade.prioridade) {
-      return a.localidade.prioridade - b.localidade.prioridade;
+  const sortList = locations.sort((primary, secondary) => {
+    if (primary.localidade.prioridade !== secondary.localidade.prioridade) {
+      return primary.localidade.prioridade - secondary.localidade.prioridade;
     }
 
-    const startDateA = new Date(a.schedule.startDate).getTime();
-    const startDateB = new Date(b.schedule.startDate).getTime();
+    const startDateA = new Date(primary.schedule.startDate).getTime();
+    const startDateB = new Date(secondary.schedule.startDate).getTime();
     return startDateA - startDateB;
   });
 
